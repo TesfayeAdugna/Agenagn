@@ -7,3 +7,4 @@ and the buyer can select the item want to buy and contact the seller.
 
 1. Tesfaye Adugna   UGR/4709/12
 2. Endale Yohannes  UGR/7379/12
+3. Rediet Ferew     UGR/1415/12
