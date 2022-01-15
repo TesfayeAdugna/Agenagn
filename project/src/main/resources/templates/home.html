@@ -9,28 +9,66 @@
 </head>
 <body>
     <div class="container">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <a class="navbar-brand" href="#">Categories</a>
+                <h1>|</h1>  
+                <a class="navbar-brand" href="#">Sell</a>
+                <form class="d-flex w-75">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <div class="row">
+                    <div class="col-10"> <h5 class="float-end">Tesfaye Adugna</h5></div>
+                    <div class="col-2"><img th:src="@{/images/tesfaye.jpg}" class="rounded-circle w-100" alt="profile image"></div>
+                </div>
+              </div>
+            </div>
+        </nav>
+    </header>
+
         <div class="row">
             <div class="col">
+                <div class="row">
+                    <div class="col-2"><img th:src="@{/images/tesfaye.jpg}" class="rounded-circle w-100" alt="profile image"></div>
+                    <div class="col-6"> <h3>Tesfaye Adugna</h3> <p>jul,2021</p> </div>
+                    <div class="col-4"><button type="button" class="btn btn-primary btn-lg">Connect</button></div>
+                </div>
                 <div class="card mb-3">
                     <img th:src="@{/images/sofa1.jpg}" class="card-img-top" alt="sofa1 image">
                     <div class="row">
-                    <img th:src="@{/images/sofa2.jpg}" class="col" alt="sofa2 image">
-                    <img th:src="@{/images/sofa2.jpg}" class="col" alt="sofa2 image">
+                        <div class="col">
+                    <img th:src="@{/images/sofa2.jpg}" alt="sofa2 image" width="100%">
+                        </div>
+                        <div class="col">
+                    <img th:src="@{/images/sofa2.jpg}" alt="sofa2 image" width="100%">
+                        </div>
                     </div>                    
                     <div class="card-body">
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <p class="card-text">I'm selling my sofa. any body interested can contact me.<br />Call me on 0973000000 <br /> price: 22,300 slightly negotiable</p>
                     </div>
                 </div>            
             </div>
             <div class="col">
+                <div class="row">
+                    <div class="col-2"><img th:src="@{/images/tesfaye.jpg}" class="rounded-circle w-100" alt="profile image"></div>
+                    <div class="col-6"> <h3>Tesfaye Adugna</h3> <p>jul,2021</p> </div>
+                    <div class="col-4"><button type="button" class="btn btn-primary btn-lg">Connect</button></div>
+                </div>
                 <div class="card mb-3">
                     <img th:src="@{/images/sofa1.jpg}" class="card-img-top" alt="sofa2 image">
                     <div class="row">
-                        <img th:src="@{/images/sofa2.jpg}" class="col" alt="sofa2 image">
-                        <img th:src="@{/images/sofa2.jpg}" class="col" alt="sofa2 image">
+                        <div class="col">
+                    <img th:src="@{/images/sofa2.jpg}" alt="sofa2 image" width="100%">
+                        </div>
+                        <div class="col">
+                    <img th:src="@{/images/sofa2.jpg}" alt="sofa2 image" width="100%">
+                        </div>
                     </div> 
                     <div class="card-body">
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">I'm selling my sofa. any body interested can contact me.<br />Call me on 0973000000 <br /> price: 22,300 slightly negotiable</p>
                     </div>
                 </div> 
             </div>
