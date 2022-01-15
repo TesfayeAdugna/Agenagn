@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card mb-3">
+                    <img th:src="@{/images/sofa1.jpg}" class="card-img-top" alt="sofa1 image">
+                    <div class="row">
+                    <img th:src="@{/images/sofa2.jpg}" class="col" alt="sofa2 image">
+                    <img th:src="@{/images/sofa2.jpg}" class="col" alt="sofa2 image">
+                    </div>                    
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>            
+            </div>
+            <div class="col">
+                <div class="card mb-3">
+                    <img th:src="@{/images/sofa1.jpg}" class="card-img-top" alt="sofa2 image">
+                    <div class="row">
+                        <img th:src="@{/images/sofa2.jpg}" class="col" alt="sofa2 image">
+                        <img th:src="@{/images/sofa2.jpg}" class="col" alt="sofa2 image">
+                    </div> 
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
