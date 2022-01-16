@@ -28,59 +28,39 @@
                 </div>
             </nav>
         </header>  
-<div class="d-grid gap-3"> 
-    <h1>choose type of the item</h1>
-    <div class="row">
-    <div class="form-check col">
-        <input type="radio" class="form-check-input" id="validationFormCheck2" name="radio-stacked" required>
-        <label class="form-check-label" for="validationFormCheck2">Vehicles</label>
-      </div>
-      <div class="form-check col">
-        <input type="radio" class="form-check-input" id="validationFormCheck2" name="radio-stacked" required>
-        <label class="form-check-label" for="validationFormCheck2">Electronics</label>
-      </div>
-      <div class="form-check mb-3 col">
-        <input type="radio" class="form-check-input" id="validationFormCheck3" name="radio-stacked" required>
-        <label class="form-check-label" for="validationFormCheck3">Phone and Tablets</label>
-      </div>
-    </div>
-    <div class="row">
-          <div class="form-check col">
-            <input type="radio" class="form-check-input" id="validationFormCheck2" name="radio-stacked" required>
-            <label class="form-check-label" for="validationFormCheck2">Furniture</label>
-          </div>
-          <div class="form-check col">
-            <input type="radio" class="form-check-input" id="validationFormCheck2" name="radio-stacked" required>
-            <label class="form-check-label" for="validationFormCheck2">Accessories</label>
-          </div>
-          <div class="form-check mb-3 col">
-            <input type="radio" class="form-check-input" id="validationFormCheck3" name="radio-stacked" required>
-            <label class="form-check-label" for="validationFormCheck3">Property(home, land, apartments ...)</label>
-            <div class="invalid-feedback">More example invalid feedback text</div>
-          </div>
-    </div>
 
-      <div class="input-group">
-        <span class="input-group-text">Price</span>
-        <input type="number" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
-        <span class="input-group-text">Birr</span>
-      </div>
+    <form action="#" th:action="@{/save}" th:object="${item}" method="post" enctype="multipart/form-data">
 
-      <div class="input-group">
-        <span class="input-group-text">Phone number</span>
-        <textarea class="form-control" aria-label="With textarea"></textarea>
-      </div>
+    <h5>Choose Type of the item</h5>
+    <select class="form-select" aria-label="Default select example">
+      <option selected>Click here to choose</option>
+      <option th:field="*{type}" value="1">Vehicles</option>
+      <option th:field="*{type}" value="2">Electronics</option>
+      <option th:field="*{type}" value="3">Phone and Tablets</option>
+      <option th:field="*{type}" value="3">Furniture</option>
+      <option th:field="*{type}" value="3">Accessories</option>
+      <option th:field="*{type}" value="3">Property(home, land, apartments ...)</option>
+    </select>
 
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-      </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Discription</label>
+          <textarea th:field="*{name}" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
 
-      <div class="input-group mb-3">
-        <label class="input-group-text" for="inputGroupFile01">Upload</label>
-        <input type="file" class="form-control" id="inputGroupFile01">
-      </div>
-</div>
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Upload photo</label>
+          <input class="form-control" type="file" name="image" accept="image/png, image/jpeg" id="formFile">
+        </div>
+
+        <label for="price" class="form-label mt-2">Price</label>
+        <input type="hidden" th:field="*{id}" />
+        <input type="number" th:field="*{price}" class="form-control w-50" id="price" />
+        <label for="contact" class="form-label mt-2">Contact</label>
+        <input type="tel" th:field="*{contact}" class="form-control w-50" id="contact" placeholder="add your phone number" />
+        
+        <button type="submit" class="btn btn-primary mt-2">save</button>
+    </form>
+
     </div>
     
 </body>

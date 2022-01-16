@@ -30,7 +30,8 @@
     </header>
 
         <div class="row">
-            <div class="col">
+            <div class="row row-cols-2">
+                <div class="col" th:each="item : ${listitem}">
                 <div class="row">
                     <div class="col-2"><img th:src="@{/images/tesfaye.jpg}" class="rounded-circle w-100" alt="profile image"></div>
                     <div class="col-6"> <h3>Tesfaye Adugna</h3> <p>jul,2021</p> </div>
@@ -39,22 +40,16 @@
                 <div class="card mb-3">
                     <img th:src="@{/images/sofa1.jpg}" class="card-img-top" alt="sofa1 image">                   
                     <div class="card-body">
-                      <p class="card-text">I'm selling my sofa. any body interested can contact me.<br />Call me on 0973000000 <br /> price: 22,300 slightly negotiable</p>
-                    </div>
-                </div>            
-            </div>
-            <div class="col">
-                <div class="row">
-                    <div class="col-2"><img th:src="@{/images/tesfaye.jpg}" class="rounded-circle w-100" alt="profile image"></div>
-                    <div class="col-6"> <h3>Tesfaye Adugna</h3> <p>jul,2021</p> </div>
-                    <div class="col-4"><button type="button" class="btn btn-primary btn-lg">Connect</button></div>
-                </div>
-                <div class="card mb-3">
-                    <img th:src="@{/images/corolla2.jpg}" class="card-img-top" alt="sofa2 image">
-                    <div class="card-body">
-                        <p class="card-text">I'm selling my sofa. any body interested can contact me.<br />Call me on 0973000000 <br /> price: 22,300 slightly negotiable</p>
+                        <p class="card-text" th:text="${item.name}">description</p>
+                        <span>Price: </span><span th:text="${item.price}">price</span> <br/>
+                        <span>Contact: </span><span th:text="${item.contact}">contact</span>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a class="btn btn-primary" th:href="@{'/edit/' + ${item.id}}" role="button">Edit</a>
+                        <a class="btn btn-outline-danger" th:href="@{'/delete/' + ${item.id}}" role="button">Delete</a>
+                        </div>
                     </div>
                 </div> 
+                </div>           
             </div>
         </div>
     </div>
