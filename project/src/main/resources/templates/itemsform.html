@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,9 +42,17 @@
       <option th:field="*{type}" value="3">Property(home, land, apartments ...)</option>
     </select>
 
+        <label for="name" class="form-label mt-2">name</label>
+        <input type="text" th:field="*{name}" class="form-control w-50" id="name" placeholder="name of Item" />
+
         <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label">Discription</label>
-          <textarea th:field="*{name}" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="shortControlTextarea1" class="form-label">shortDescription</label>
+            <textarea th:field="*{shortDescription}" class="form-control" id="shortControlTextarea1" rows="1"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">detailDescription</label>
+          <textarea th:field="*{detailDescription}" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
 
         <div class="mb-3">

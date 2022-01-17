@@ -14,6 +14,8 @@ public class Items {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String shortDescription;
+    private String detailDescription;
     private int price;
     private String contact;
     private String type;
