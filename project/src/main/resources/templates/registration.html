@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign UP</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <form method="POST" th:action="@{/register}" id="registerForm">
+        <label class="form-label" for="username">Username: </label>
+        <input class="form-control" type="text" name="username" id="username" />
+        <label class="form-label" for="password">Password: </label>
+        <input class="form-control" type="password" name="password" id="password" />
+        <label class="form-label" for="confirm">Confirm password: </label>
+        <input class="form-control" type="password" name="confirm" id="confirm"/>
+        <label class="form-label" for="firstName">First name: </label>
+        <input class="form-control" type="text" name="firstName" id="fullName" />
+
+        <label class="form-label" for="middleName">Middle name: </label>
+        <input class="form-control" type="text" name="middleName" id="fullName" />
+
+        <label class="form-label" for="lastName">Last name: </label>
+        <input class="form-control" type="text" name="lastName" id="fullName" />
+
+        <label class="form-label" for="phone">Phone: </label>
+        <input class="form-control" type="text" name="phone" id="phone" />
+        <label class="form-label" for="email">email: </label>
+        <input class="form-control" type="text" name="email" id="email" />
+        <input class="btn btn-primary my-2" type="submit" value="Register" />
+      </form>
+      <form class="d-flex" method="POST" th:action="@{/logout}">
+        <input type="submit" value="Logout"/>
+       </form>
+       
+</body>
+</html>   

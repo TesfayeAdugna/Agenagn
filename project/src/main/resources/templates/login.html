@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Agenagn</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <main class="form-signin mx-auto w-50">
+      <h1>Login</h1>
+      <img th:src="@{/images/TacoCloud.png}" />
+
+      <div th:if="${error}">
+        Unable to login. Check your username and password.
+      </div>
+
+      <p>New here? Click <a th:href="@{/register}">here</a> to register.</p>
+      <form method="POST" th:action="@{/login}">
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+        <label class="form-label" for="username">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          name="username"
+          placeholder="Username"
+        />
+        <label class="form-label" for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          placeholder="Password"
+        />
+        <button class="w-100 btn btn-lg btn-primary my-2" type="submit">
+          Sign in
+        </button>
+      </form>
+    </main>
+
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+  </body>
+</html>
