@@ -30,7 +30,7 @@
     </header>
 
         <div class="row">
-            <div class="row row-cols-2">
+            <div class="row row-cols-3">
                 <div class="col" th:each="item : ${listitem}">
                 <div class="row">
                     <div class="col-2"><img th:src="@{/images/tesfaye.jpg}" class="rounded-circle w-100" alt="profile image"></div>
@@ -41,7 +41,7 @@
                     <img th:src="@{/images/sofa1.jpg}" class="card-img-top" alt="sofa1 image">                   
                     <div class="card-body">
                         <p class="card-text" th:text="${item.name}">description</p>
-                        <span>Price: </span><span th:text="${item.price}">price</span> <br/>
+                        <span>Price: </span><span th:text="${item.price}">price</span> <span> birr</span> <br/>
                         <span>Contact: </span><span th:text="${item.contact}">contact</span>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <a class="btn btn-primary" th:href="@{'/edit/' + ${item.id}}" role="button">Edit</a>
