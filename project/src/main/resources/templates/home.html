@@ -1,94 +1,95 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home page</title>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
-    <style>
-      #more {
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home page</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+  <style>
+      .more {
         display: none;
       }
     </style>
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <a class="navbar-brand" href="#">Categories</a>
-              <h1>|</h1>
-              <a class="navbar-brand" th:href="@{/itemsform}">Sell</a>
-              <form class="d-flex w-75">
-                <input
-                  class="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button class="btn btn-outline-success" type="submit">
-                  Search
-                </button>
-              </form>
-              <div class="row">
-                <div class="col-10">
-                  <h5 class="float-end">Tesfaye Adugna</h5>
-                </div>
-                <div class="col-2">
-                  <img
-                    th:src="@{/images/tesfaye.jpg}"
-                    class="rounded-circle w-100"
-                    alt="profile image"
-                  />
-                </div>
-              </div>
+</head>
+<body>
+<div class="container">
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <a class="navbar-brand" href="#">Categories</a>
+          <h1>|</h1>
+          <a class="navbar-brand" th:href="@{/itemsform}">Sell</a>
+          <form class="d-flex w-75">
+            <input
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+          <div class="row">
+            <div class="col-10">
+              <h5 class="float-end">Tesfaye Adugna</h5>
             </div>
-          </div>
-        </nav>
-      </header>
-
-      <div class="row">
-        <div class="row row-cols-3">
-          <div class="col" th:each="item : ${listitem}">
-
-            <div class="card mb-3">
-                <img
-                  th:src="@{/images/sofa2.jpg}"
-                  class="card-img-top"
-                  alt="sofa1 image"
+            <div class="col-2">
+              <img
+                      th:src="@{/images/tesfaye.jpg}"
+                      class="rounded-circle w-100"
+                      alt="profile image"
               />
-              <div class="card-body">
-                <p class="card-text" th:text="${item.shortDescription}">
-                  description<br /></p>
-                  <span>Name: </span>
-                  <span th:text="${item.name}">name</span><br>
-                  <span>Price: </span
-                  ><span th:text="${item.price}">price</span>
-                  <span> birr</span> <br />
-
-                <p>
-                  <span id="dots">more.....</span>
-                  <span id="more">
-                    <span th:text="${item.detailDescription}"> this is the description.
-                  </span><br><br>
-                  <span>Contact: </span
-                  ><span th:text="${item.contact}">contact</span>
-                  </span>
-                </p>
-                <button onclick="myFunction()" id="myBtn">Read more</button>
-              </div>
             </div>
           </div>
         </div>
       </div>
+    </nav>
+  </header>
+
+  <div class="row">
+    <div class="row row-cols-3">
+      <div class="col" th:each="item : ${listitem}">
+        <div class="card mb-3">
+          <img
+                  th:src="@{/images/sofa2.jpg}"
+                  class="card-img-top"
+                  alt="sofa1 image"
+          />
+          <div class="card-body">
+            <p class="card-text" th:text="${item.shortDescription}">
+              description<br />
+            </p>
+            <span>Name: </span>
+            <span th:text="${item.name}">name</span><br />
+            <span>Price: </span><span th:text="${item.price}">price</span>
+            <span> birr</span> <br />
+
+            <p>
+              <span class="dots">more.....</span>
+              <span class="more"><br>
+                    <span th:text="${item.detailDescription}">
+                      this is the description. </span
+                    ><br /><br />
+                    <span>Contact: </span
+                    ><span th:text="${item.contact}">contact</span>
+                  </span>
+            </p>
+            <button onclick="myFunction()" class="myBtn">Read more</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <script>
+  </div>
+</div>
+<script>
       function myFunction() {
-        var dots = document.getElementById("dots");
-        var moreText = document.getElementById("more");
-        var btnText = document.getElementById("myBtn");
+        let btnText = event.target,
+          context = event.target.parentNode,
+          moreText = context.querySelector(".more");
+          dots = context.querySelector(".dots");
 
         if (dots.style.display === "none") {
           dots.style.display = "inline";
@@ -101,5 +102,5 @@
         }
       }
     </script>
-  </body>
+</body>
 </html>
