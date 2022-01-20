@@ -10,43 +10,35 @@
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
-    <header>
+    <header class="fixed-top">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-             
+              <!-- Categories -->
               <a href="#sidebar" class="navbar-brand" data-bs-toggle="offcanvas" role="button" aria-controls="sidebar">
                 Categories
               </a>
-             
+              <!-- Categories -->
               <h1>|</h1>
-             
+              <a class="navbar-brand" th:href="@{/}">Agenagn</a>
+              <h1>|</h1>
+              <a class="navbar-brand" th:href="@{/itemsform}">Sell</a>
               <form class="d-flex w-75">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                 <button class="btn btn-outline-success" type="submit">Search</button>
               </form>
-              
-              <!-- trial -->
-              <ul class="nav justify-content-end">
-                
-                <li class="nav-item">
-                 <a class="nav-link" th:href="@{/itemsform}">Sell</a>
-                </li>
-                <li class="nav-item">
-                 <a class="nav-link" th:href="@{/login}">Sign Up</a>
-                </li>
-              </ul>
-              <div class="col">
-                <div class="row-2"><img th:src="@{/images/tesfaye.jpg}" class="rounded-circle w-50" alt="profile image"/></div>
-                <div class="row-2"><h5>Tesfaye Adugna</h5></div>
-              </div> 
-    
-               <!-- trial -->
+              <a class="navbar-brand" th:href="@{/register}">SignUp</a>
+              <h1>|</h1>
+              <a class="navbar-brand" th:href="@{/login}">Login</a>
+              <h1>|</h1>
+              <form class="d-flex" method="POST" th:action="@{/logout}">
+              <input type="submit" value="Logout"/>
+              </form>
             </div>
           </div>
         </nav> 
       </header>
- 
+      <main class="form-signin mx-auto w-50" style="margin-top: 5em;">
 <section class="mb-4">
     <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
     <p class="text-center w-responsive mx-auto mb-5">If you have any questions or 
@@ -82,7 +74,6 @@ comments on our website, you can leave your message below.</p>
     <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
     <label for="message">Your message</label>
 </div>
-
 </div>
 </div>
 </form>
@@ -92,70 +83,58 @@ comments on our website, you can leave your message below.</p>
 </div>
 <div class="status"></div>
 </div>
-
-
 </section>
+
+<!-- offcanvas -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id = "sidebar" aria-labelledby="sidebar-label">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="sidebar-label">Categories</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" arial-label="close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul>
+        <li><a class="dropdown-item" href="#">Accessories</a></li>
+        <li><a class="dropdown-item" href="#">Electronics</a></li>
+        <li><a class="dropdown-item" href="#">Furniture</a></li>
+        <li><a class="dropdown-item" href="#">Phone & Tablets</a></li>
+        <li><a class="dropdown-item" href="#">Property(House, Land & Appartment)</a></li>
+        <li><a class="dropdown-item" href="#">VehicleS</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- offcanvas -->
+</main>
 <footer class="bg-dark text-white pt-5 pb-4">
-<div class="container text-center text-md-left">
-<div class="row text-center text-md-left">
-<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-<h4 class="mb-4 font-weight-bold text-warning">About us</h4>
-<ul class="nav flex-column">
-
-<li class="nav-item">
-<a class="nav-link" href="#">About Agenagn</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="#">Our Goals</a>
-</li>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="#">Privacy Policy</a>
-</li>
-
-</ul>
-</div> 
-<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-<h4 class="mb-4 font-weight-bold text-warning">Important Links</h4>
-<ul class="nav flex-column">
-
-<li class="nav-item">
-<a class="nav-link" href="#">Our Items</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="#">Your Account</a>
-</li>
-</li>
-<li class="nav-item">
-<a class="nav-link" th:href="@{/contact}">Contact Us</a>
-</li>
-
-</ul>
-</div>
-<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-<h4 class="mb-4 font-weight-bold text-warning">Contact Us</h4>
-<ul class="nav flex-column">
-
-<li class="nav-item">
-<a class="nav-link" th:href="@{/itemsform}">Facebook</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" th:href=@{/itemsform}>Telegram</a>
-</li>
-</li>
-<li class="nav-item">
-<a class="nav-link"  th:href=@{/itemsform}>Email</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" th:href=@{/itemsform}>Phone</a>
-</li>
-
-</ul>
-</div>
-</div>
-</div>
-</footer> 
-
+    <div class="container text-center text-md-left">
+      <div class="row text-center text-md-left">
+        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h4 class="mb-4 font-weight-bold text-warning">About us</h4>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="#">About Agenagn</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Our Goals</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Privacy Policy</a></li>
+          </ul>
+        </div> 
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h4 class="mb-4 font-weight-bold text-warning">Important Links</h4>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="#">Our Items</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Your Account</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/contact}">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h4 class="mb-4 font-weight-bold text-warning">Contact Us</h4>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" th:href="@{/itemsform}">Facebook</a></li>
+            <li class="nav-item"><a class="nav-link" th:href=@{/itemsform}>Telegram</a></li>
+            <li class="nav-item"><a class="nav-link"  th:href=@{/itemsform}>Email</a></li>
+            <li class="nav-item"><a class="nav-link" th:href=@{/itemsform}>Phone</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

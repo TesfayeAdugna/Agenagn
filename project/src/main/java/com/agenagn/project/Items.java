@@ -1,12 +1,15 @@
 package com.agenagn.project;
 
 import java.beans.Transient;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -30,6 +33,8 @@ public class Items {
     private String type;
     @Column(nullable = true, length = 64)
     private String photos;
+    @Temporal(TemporalType.DATE)
+    private Date created_Date = new Date(System.currentTimeMillis());
 
     @Transient
     public String getPhotosImagePath() {

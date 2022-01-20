@@ -15,7 +15,7 @@
     </style>
 </head>
 <body>
-  <header>
+  <header class="fixed-top">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -25,34 +25,26 @@
           </a>
           <!-- Categories -->
           <h1>|</h1>
-          <!-- <a class="navbar-brand" th:href="@{/itemsform}">Sell</a>
-          <a class="navbar-brand" th:href="@{/login}">Sign Up</a> -->
+          <a class="navbar-brand" th:href="@{/}">Agenagn</a>
+          <h1>|</h1>
+          <a class="navbar-brand" th:href="@{/itemsform}">Sell</a>
           <form class="d-flex w-75">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
-          
-          <!-- trial -->
-          <ul class="nav justify-content-end">
-            
-            <li class="nav-item">
-             <a class="nav-link" th:href="@{/itemsform}">Sell</a>
-            </li>
-            <li class="nav-item">
-             <a class="nav-link" th:href="@{/login}">Sign Up</a>
-            </li>
-          </ul>
-          <div class="col">
-            <div class="row-2"><img th:src="@{/images/tesfaye.jpg}" class="rounded-circle w-50" alt="profile image"/></div>
-            <div class="row-2"><h5>Tesfaye Adugna</h5></div>
-          </div> 
-
-           <!-- trial -->
+          <a class="navbar-brand" th:href="@{/register}">SignUp</a>
+          <h1>|</h1>
+          <a class="navbar-brand" th:href="@{/login}">Login</a>
+          <h1>|</h1>
+          <form class="d-flex" method="POST" th:action="@{/logout}">
+            <input type="submit" value="Logout"/>
+           </form>
         </div>
       </div>
     </nav> 
   </header>
 
+  <main style="margin-top: 5em;">
   <div class="container">
   <div class="row">
     <div class="row row-cols-3">
@@ -60,7 +52,7 @@
         <div class="card mb-3">
           <img th:src="@{${item.photosImagePath}}"  th:alt="${item.shortDescription}"/>
           <div class="card-body">
-            <p>jul,2021</p>
+            <p class="text-info bg-dark" th:text="${item.created_Date}">jul,2021</p>
             <p class="card-text" th:text="${item.shortDescription}">description<br/></p>
             <span>Name: </span><span th:text="${item.name}">name</span><br/>
             <span>Price: </span><span th:text="${item.price}">price</span><span> birr</span><br/>
@@ -75,7 +67,6 @@
 </div>
 
 <!-- offcanvas -->
-
 <div class="offcanvas offcanvas-start" tabindex="-1" id = "sidebar" aria-labelledby="sidebar-label">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="sidebar-label">Categories</h5>
@@ -92,8 +83,9 @@
     </ul>
   </div>
 </div>
-
 <!-- offcanvas -->
+
+</main>
 
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 <script>
@@ -120,55 +112,26 @@ if (dots.style.display === "none") {
              <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                <h4 class="mb-4 font-weight-bold text-warning">About us</h4>
                <ul class="nav flex-column">
-                
-                 <li class="nav-item">
-                   <a class="nav-link" href="#">About Agenagn</a>
-                 </li>
-                 <li class="nav-item">
-                   <a class="nav-link" href="#">Our Goals</a>
-                 </li>
-               </li>
-               <li class="nav-item">
-                 <a class="nav-link" href="#">Privacy Policy</a>
-               </li>
-                 
+                 <li class="nav-item"><a class="nav-link" href="#">About Agenagn</a></li>
+                 <li class="nav-item"><a class="nav-link" href="#">Our Goals</a></li>
+                 <li class="nav-item"><a class="nav-link" href="#">Privacy Policy</a></li>
                </ul>
              </div> 
              <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                <h4 class="mb-4 font-weight-bold text-warning">Important Links</h4>
                <ul class="nav flex-column">
-                
-                 <li class="nav-item">
-                   <a class="nav-link" href="#">Our Items</a>
-                 </li>
-                 <li class="nav-item">
-                   <a class="nav-link" href="#">Your Account</a>
-                 </li>
-               </li>
-               <li class="nav-item">
-                 <a class="nav-link" th:href="@{/contact}">Contact Us</a>
-               </li>
-                 
+                 <li class="nav-item"><a class="nav-link" href="#">Our Items</a></li>
+                 <li class="nav-item"><a class="nav-link" href="#">Your Account</a></li>
+                 <li class="nav-item"><a class="nav-link" th:href="@{/contact}">Contact Us</a></li>
                </ul>
              </div>
              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
                <h4 class="mb-4 font-weight-bold text-warning">Contact Us</h4>
                <ul class="nav flex-column">
-                
-                 <li class="nav-item">
-                   <a class="nav-link" th:href="@{/itemsform}">Facebook</a>
-                 </li>
-                 <li class="nav-item">
-                   <a class="nav-link" th:href=@{/itemsform}>Telegram</a>
-                 </li>
-               </li>
-               <li class="nav-item">
-                 <a class="nav-link"  th:href=@{/itemsform}>Email</a>
-               </li>
-               <li class="nav-item">
-                 <a class="nav-link" th:href=@{/itemsform}>Phone</a>
-               </li>
-                 
+                 <li class="nav-item"><a class="nav-link" th:href="@{/itemsform}">Facebook</a></li>
+                 <li class="nav-item"><a class="nav-link" th:href=@{/itemsform}>Telegram</a></li>
+                 <li class="nav-item"><a class="nav-link"  th:href=@{/itemsform}>Email</a></li>
+                 <li class="nav-item"><a class="nav-link" th:href=@{/itemsform}>Phone</a></li>
                </ul>
              </div>
            </div>
