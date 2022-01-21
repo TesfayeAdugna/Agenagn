@@ -35,6 +35,10 @@ public class HomeController {
         model.addAttribute("item", new Items());
         return "itemsform";
     }
+    @GetMapping("/profile")
+    public String profile(){
+        return "profile";
+    }
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveItems(@ModelAttribute("item") Items items, @RequestParam("image") MultipartFile multipartFile) throws IOException{
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
