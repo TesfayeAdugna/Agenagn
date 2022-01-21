@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+ <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,13 +26,19 @@
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
-          <a class="navbar-brand" th:href="@{/register}">SignUp</a>
-          <h1>|</h1>
-          <a class="navbar-brand" th:href="@{/login}">Login</a>
-          <h1>|</h1>
+
+          <a sec:authorize="! isAuthenticated()" class="navbar-brand" th:href="@{/register}">SignUp</a>
+          <h1 sec:authorize="! isAuthenticated()">|</h1>
+          <a sec:authorize="! isAuthenticated()" class="navbar-brand" th:href="@{/login}">Login</a>
+          <h1 sec:authorize="! isAuthenticated()">|</h1>
           <form class="d-flex" method="POST" th:action="@{/logout}">
-          <input type="submit" value="Logout"/>
-          </form>
+            <input sec:authorize="isAuthenticated()" type="submit" value="Logout"/>
+           </form>
+           <div sec:authorize="isAuthenticated()" class="row">
+            <div class="col-10"><h5 sec:authorize="isAuthenticated()" th:text="${currentUser.getFirstName()}" class="float-end">user firt name</h5></div>
+            <div class="col-2"><img th:src="@{/images/tesfaye.jpg}" class="rounded-circle w-100" alt="profile image"/></div>
+           
+
         </div>
       </div>
     </nav> 

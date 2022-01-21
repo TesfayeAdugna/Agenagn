@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
- xmlns:th="http://www.thymeleaf.org">
+ xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
  
 <head>
   <meta charset="UTF-8" />
@@ -32,14 +32,18 @@
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
-          <a class="navbar-brand" th:href="@{/register}">SignUp</a>
-          <h1>|</h1>
-          <a class="navbar-brand" th:href="@{/login}">Login</a>
-          <h1>|</h1>
+
+          <a sec:authorize="! isAuthenticated()" class="navbar-brand" th:href="@{/register}">SignUp</a>
+          <h1 sec:authorize="! isAuthenticated()">|</h1>
+          <a sec:authorize="! isAuthenticated()" class="navbar-brand" th:href="@{/login}">Login</a>
+          <h1 sec:authorize="! isAuthenticated()">|</h1>
           <form class="d-flex" method="POST" th:action="@{/logout}">
-            <input type="submit" value="Logout"/>
+            <input sec:authorize="isAuthenticated()" type="submit" value="Logout"/>
            </form>
-        </div>
+           <div sec:authorize="isAuthenticated()" class="row">
+            <div class="col-10"><h5 sec:authorize="isAuthenticated()"  th:text="${currentUser.getFirstName()}" class="float-end">user firt name</h5></div>
+            <div class="col-2"><img th:src="@{/images/tesfaye.jpg}" class="rounded-circle w-100" alt="profile image"/></div>
+           </div>
       </div>
     </nav> 
   </header>
@@ -59,6 +63,10 @@
             <p><span class="dots">more.....</span><span class="more"><br><span th:text="${item.detailDescription}">detail description</span><br/><br/>
               <span>Contact: </span><span th:text="${item.contact}">contact</span></span></p>
             <button onclick="myFunction()" class="myBtn">Read more</button>
+            <span sec:authorize="isAuthenticated()">
+              <a th:if="${currentUser.username} == ${item.User.username}" class="btn btn-primary" th:href="@{'/edit/'+ ${item.id}}" role="button">Edit</a>
+              <a th:if="${currentUser.username} == ${item.User.username}" class="btn btn-outline-danger" th:href="@{'/delete/'+ ${item.id}}" role="button">Delete</a>
+            </span>
           </div>
         </div>
       </div>

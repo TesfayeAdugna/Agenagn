@@ -8,8 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.agenagn.project.security.User;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -35,6 +38,9 @@ public class Items {
     private String photos;
     @Temporal(TemporalType.DATE)
     private Date created_Date = new Date(System.currentTimeMillis());
+
+    @ManyToOne
+    private User user;
 
     @Transient
     public String getPhotosImagePath() {

@@ -3,7 +3,10 @@ package com.agenagn.project;
 import java.io.IOException;
 import java.util.List;
 
+import com.agenagn.project.security.User;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -24,25 +27,35 @@ public class HomeController {
     private ItemRepository repo;
 
     @GetMapping("/")
-    public String home(Model model) {
+    public String home(Model model ,@AuthenticationPrincipal User user) {
         List<Items> listitem = service.listAll();
         model.addAttribute("listitem", listitem);
+        if(!(user == null)){
+            model.addAttribute("currentUser", user);
+        }
         System.out.print("Get /");
         return "home";
     }
     @GetMapping("/itemsform")
-    public String sell(Model model){
+    public String sell(Model model ,@AuthenticationPrincipal User user){
         model.addAttribute("item", new Items());
+        if(!(user == null)){
+            model.addAttribute("currentUser", user);
+        }
         return "itemsform";
     }
     @GetMapping("/profile")
-    public String profile(){
+    public String profile(Model model ,@AuthenticationPrincipal User user){
+        if(!(user == null)){
+            model.addAttribute("currentUser", user);
+        }
         return "profile";
     }
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveItems(@ModelAttribute("item") Items items, @RequestParam("image") MultipartFile multipartFile) throws IOException{
+    public String saveItems(@ModelAttribute("item") Items items, @RequestParam("image") MultipartFile multipartFile ,@AuthenticationPrincipal User user) throws IOException{
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         items.setPhotos(fileName);
+        items.setUser(user);
          
         Items savedItems = repo.save(items);
  
@@ -54,10 +67,13 @@ public class HomeController {
     }
     
     @RequestMapping("/edit/{id}")
-    public ModelAndView showEditStudentPage(@PathVariable(name = "id") int id) {
+    public ModelAndView showEditStudentPage(@PathVariable(name = "id") int id ,@AuthenticationPrincipal User user) {
         ModelAndView mav = new ModelAndView("itemsform");
         Items items = service.get(id);
         mav.addObject("item", items);
+        if(!(user == null)){
+            mav.addObject("currentUser", user);
+        }
         return mav;
         
     }
