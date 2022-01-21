@@ -3,14 +3,10 @@ package com.agenagn.project;
 import java.beans.Transient;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.agenagn.project.security.User;
 
@@ -24,15 +20,22 @@ public class Items {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+    @NotNull
+    @NotBlank(message="Please enter your name")
     private String name;
-    @Column(length = 125)
-    @Length(min = 3, max = 125, message = "You have to write at least 3 words sentence for delail description")
+    @Column(length = 70)
+    @Length(min = 10, message = "You have to write at least 10 characters for short description.")
+    @Length(max = 70, message = "You have to write less than 70 characters for short description.")
     private String shortDescription;
     @Column(length = 500)
-    @Length(min = 10, max = 500, message = "You have to write at least 10 words sentence for delail description")
+    @Length(min = 50, message = "You have to write at least 50 characters for detail description.")
     private String detailDescription;
-    private int price;
+    private double price;
+    @NotNull
+    @Length(min = 10,max = 10, message = "Phone number must contain 10 digits." )
+    @Digits(integer = 10, fraction = 0, message = "Phone number must be digits.")
     private String contact;
+    @NotBlank(message="Type is required")
     private String type;
     @Column(nullable = true, length = 64)
     private String photos;

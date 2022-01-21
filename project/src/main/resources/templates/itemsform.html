@@ -41,7 +41,8 @@
 
         </div>
       </div>
-    </nav> 
+      </div>
+    </nav>
   </header>
   <main style="margin-top: 5em;">
     <div class="form-signin mx-auto w-50">
@@ -56,29 +57,78 @@
       <option th:text="Property" value="Property">Property(home, land, apartments ...)</option>
     </select>
         <label for="name" class="form-label mt-2">name</label>
-        <input type="text" th:field="*{name}" class="form-control w-50" id="name" placeholder="name of Item" />
+        <input
+                th:class="|form-control ${#fields.hasErrors('name')? 'is-invalid': 'is-valid'}|"
+                type="text"
+                th:field="*{name}"
+                id="name" placeholder="name of Item"
+        />
+        <div
+                class="invalid-feedback"
+                th:if="${#fields.hasErrors('name')}"
+                th:errors="*{name}">
+        </div><br>
 
         <div class="mb-3">
             <label for="shortControlTextarea1" class="form-label">shortDescription</label>
-            <textarea th:field="*{shortDescription}" class="form-control" id="shortControlTextarea1" rows="1"></textarea>
-        </div>
-        
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label">detailDescription</label>
-          <textarea th:field="*{detailDescription}" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea
+                    th:class="|form-control ${#fields.hasErrors('shortDescription')? 'is-invalid': 'is-valid'}|"
+                    th:field="*{shortDescription}"
+                    id="shortControlTextarea1" rows="1">
+
+            </textarea>
+            <div
+                    class="invalid-feedback"
+                    th:if="${#fields.hasErrors('shortDescription')}"
+                    th:errors="*{shortDescription}">
+            </div>
         </div>
 
         <div class="mb-3">
-          <label for="formFile" class="form-label">Upload photo</label>
-          <input class="form-control" type="file" name="image" accept="image/png, image/jpeg" id="formFile">
+            <label for="exampleFormControlTextarea1" class="form-label">detailDescription</label>
+            <textarea
+                    th:class="|form-control ${#fields.hasErrors('detailDescription')? 'is-invalid': 'is-valid'}|"
+                    th:field="*{detailDescription}"
+                    id="exampleFormControlTextarea1" rows="3">
+          </textarea>
+            <div
+                    class="invalid-feedback"
+                    th:if="${#fields.hasErrors('detailDescription')}"
+                    th:errors="*{detailDescription}">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Upload photo</label>
+            <input class="form-control" type="file" name="image" accept="image/png, image/jpeg" id="formFile">
         </div>
 
         <label for="price" class="form-label mt-2">Price</label>
         <input type="hidden" th:field="*{id}" />
-        <input type="number" th:field="*{price}" class="form-control w-50" id="price" />
+        <input
+                th:class="|form-control ${#fields.hasErrors('price')? 'is-invalid': 'is-valid'}|"
+                type="number"
+                th:field="*{price}"
+                id="price"
+        />
+        <div
+                class="invalid-feedback"
+                th:if="${#fields.hasErrors('price')}"
+                th:errors="*{price}">
+        </div><br>
         <label for="contact" class="form-label mt-2">Contact</label>
-        <input type="tel" th:field="*{contact}" class="form-control w-50" id="contact" placeholder="add your phone number" />
-        
+        <input
+                th:class="|form-control ${#fields.hasErrors('contact')? 'is-invalid': 'is-valid'}|"
+                type="tel"
+                th:field="*{contact}"
+                id="contact" placeholder="add your phone number"
+        />
+        <div
+                class="invalid-feedback"
+                th:if="${#fields.hasErrors('contact')}"
+                th:errors="*{contact}">
+        </div><br>
+
         <button type="submit" class="btn btn-primary mt-2">save</button>
     </form>
     </div>

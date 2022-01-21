@@ -10,6 +10,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
 
 @Controller
 public class HomeController {
@@ -67,15 +70,23 @@ public class HomeController {
         return "profile";
     }
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveItems(@ModelAttribute("item") Items items, @RequestParam("image") MultipartFile multipartFile ,@AuthenticationPrincipal User user) throws IOException{
+    public String saveItems(@Valid @ModelAttribute("item") Items items, Errors errors, @RequestParam("image") MultipartFile multipartFile, @AuthenticationPrincipal User user, Model model) throws IOException{
+
+        if (errors.hasErrors()) {
+            if(!(user == null)){
+                model.addAttribute("currentUser", user);
+            }
+            return "itemsform";
+        }
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         items.setPhotos(fileName);
         items.setUser(user);
-         
+
+
         Items savedItems = repo.save(items);
- 
+
         String uploadDir = "user-photos/" + savedItems.getId();
- 
+
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
         service.save(items);
         return "redirect:/";
