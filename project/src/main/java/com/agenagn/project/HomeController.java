@@ -36,6 +36,21 @@ public class HomeController {
         System.out.print("Get /");
         return "home";
     }
+    // for search
+    @RequestMapping("/search")
+    public String home(Items items, Model model, @AuthenticationPrincipal User user, String keyword) {
+        if(!(user == null)){
+            model.addAttribute("currentUser", user);
+        }
+     if(keyword!=null) {
+      List<Items> listitem = service.getByKeyword(keyword);
+      model.addAttribute("listitem", listitem);
+     }else {
+     List<Items> listitem = service.listAll();
+     model.addAttribute("listitem", listitem);}
+     return "home";
+    }
+    // for search
     @GetMapping("/itemsform")
     public String sell(Model model ,@AuthenticationPrincipal User user){
         model.addAttribute("item", new Items());
