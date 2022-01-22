@@ -93,7 +93,7 @@ public class HomeController {
     }
     
     @RequestMapping("/edit/{id}")
-    public ModelAndView showEditStudentPage(@PathVariable(name = "id") int id ,@AuthenticationPrincipal User user) {
+    public ModelAndView showEditItemsPage(@PathVariable(name = "id") int id ,@AuthenticationPrincipal User user) {
         ModelAndView mav = new ModelAndView("itemsform");
         Items items = service.get(id);
         mav.addObject("item", items);

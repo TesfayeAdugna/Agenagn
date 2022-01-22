@@ -36,10 +36,9 @@
           <a sec:authorize="! isAuthenticated()" class="navbar-brand" th:href="@{/register}">SignUp</a>
           <h1 sec:authorize="! isAuthenticated()">|</h1>
           <a sec:authorize="! isAuthenticated()" class="navbar-brand" th:href="@{/login}">Login</a>
-          
-           <div sec:authorize="isAuthenticated()" class="row">
-            <div class="col-10"><h5 sec:authorize="isAuthenticated()"  th:text="${currentUser.getFirstName()}" class="float-end">user firt name</h5></div>
-            <div class="col-2"><img th:src="@{/images/tesfaye.jpg}" class="rounded-circle w-100" alt="profile image"/></div>
+          <div sec:authorize="isAuthenticated()" class="row">
+            <div class="col-9"><a sec:authorize="isAuthenticated()" th:href="@{/profile}"><h5 sec:authorize="isAuthenticated()"  th:text="${currentUser.getUsername()}" class="float-end">user firt name</h5></a></div>
+            <div class="col-3"><a sec:authorize="isAuthenticated()" th:href="@{/profile}"><img th:src="@{/images/guest-user.jpg}" class="rounded-circle w-100" alt="profile image"/></a></div>
            </div>
            <form class="d-flex" method="POST" th:action="@{/logout}" style="margin-left: 3em;">
             <input sec:authorize="isAuthenticated()" type="submit" value="Logout"/>
@@ -129,7 +128,7 @@ if (dots.style.display === "none") {
                <h4 class="mb-4 font-weight-bold text-warning">Important Links</h4>
                <ul class="nav flex-column">
                  <li class="nav-item"><a class="nav-link" href="#">Our Items</a></li>
-                 <li class="nav-item"><a class="nav-link" href="#">Your Account</a></li>
+                 <li class="nav-item"><a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/profile}">Your Account</a></li>
                  <li class="nav-item"><a class="nav-link" th:href="@{/contact}">Contact Us</a></li>
                  <!-- for Admin -->
                  <li class="nav-item"><a class="nav-link" th:href="@{/getmessage}">Admin</a></li>

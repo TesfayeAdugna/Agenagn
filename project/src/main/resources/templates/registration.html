@@ -29,14 +29,13 @@
           <a sec:authorize="! isAuthenticated()" class="navbar-brand" th:href="@{/register}">SignUp</a>
           <h1 sec:authorize="! isAuthenticated()">|</h1>
           <a sec:authorize="! isAuthenticated()" class="navbar-brand" th:href="@{/login}">Login</a>
-          <h1 sec:authorize="! isAuthenticated()">|</h1>
-          <form class="d-flex" method="POST" th:action="@{/logout}">
+          <div sec:authorize="isAuthenticated()" class="row">
+            <div class="col-9"><a sec:authorize="isAuthenticated()" th:href="@{/profile}"><h5 sec:authorize="isAuthenticated()"  th:text="${currentUser.getUsername()}" class="float-end">user firt name</h5></a></div>
+            <div class="col-3"><a sec:authorize="isAuthenticated()" th:href="@{/profile}"><img th:src="@{/images/guest-user.jpg}" class="rounded-circle w-100" alt="profile image"/></a></div>
+           </div>
+           <form class="d-flex" method="POST" th:action="@{/logout}" style="margin-left: 3em;">
             <input sec:authorize="isAuthenticated()" type="submit" value="Logout"/>
            </form>
-           <div sec:authorize="isAuthenticated()" class="row">
-            <div class="col-10"><h5 sec:authorize="isAuthenticated()"  th:text="${currentUser.getFirstName()}" class="float-end">user firt name</h5></div>
-            <div class="col-2"><img th:src="@{/images/tesfaye.jpg}" class="rounded-circle w-100" alt="profile image"/></div>
-           </div>
         </div>
       </div>
     </nav> 
