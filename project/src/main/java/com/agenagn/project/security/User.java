@@ -3,7 +3,6 @@ package com.agenagn.project.security;
 import java.util.Arrays;
 import java.util.Collection;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

@@ -44,8 +44,43 @@
     </nav> 
   </header>
 
-  <main class="mx-auto w-50" style="margin-top: 5em;">
+  <main class="mx-auto w-75" style="margin-top: 5em;">
+    <div class="row">
+      <div class="col">
+        <span class="dots">Click here to see Users List</span>
+        <button onclick="myFunction()" class="myBtn">Users list</button>
+        <div class="more">
+          <h1>Users List</h1>
     <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Username</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Middle Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Phone</th>
+            <th scope="col">email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  th:each="contact : ${listcontact}">
+            <td scope="row" th:text="${contact.id}"></td>
+            <td th:text="${contact.name}">name</td>
+            <td th:text="${contact.email}">email</td>
+            <td th:text="${contact.subject}">subject</td>
+            <td th:text="${contact.message}">message</td>
+            <td>youremail@gmail.com</td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+    </div>
+    <div class="col">
+      <span class="dots">click here to see messages</span>
+      <button onclick="myFunction()" class="myBtn">Messages</button>
+      <div class="more">
+        <h1>Here are your messages</h1>
+      <table class="table">
         <thead>
         <tr>
             <th scope="col">No.</th>
@@ -65,6 +100,9 @@
         </tr>
         </tbody>
     </table>
+    </div>
+    </div>
+    </div>
 
 <!-- offcanvas -->
 <div class="offcanvas offcanvas-start" tabindex="-1" id = "sidebar" aria-labelledby="sidebar-label">
@@ -88,6 +126,24 @@
 </main>
 
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script>
+  function myFunction() {
+    let btnText = event.target,
+      context = event.target.parentNode,
+      moreText = context.querySelector(".more");
+      dots = context.querySelector(".dots");
+
+if (dots.style.display === "none") {
+      dots.style.display = "inline";
+      btnText.innerHTML = "Click Here";
+      moreText.style.display = "none";
+    } else {
+      dots.style.display = "none";
+      btnText.innerHTML = "Back";
+      moreText.style.display = "inline";
+    }
+  }
+</script>
     <footer class="bg-dark text-white pt-5 pb-4">
          <div class="container text-center text-md-left">
            <div class="row text-center text-md-left">
