@@ -1,18 +1,34 @@
 package com.agenagn.project.security;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import lombok.Data;
 
+import javax.validation.constraints.*;
+
 @Data
 public class RegistrationForm {
-   private String username;
-   private String password;
-   private String firstName;
-   private String middleName;
-   private String lastName;
-   private String phone;
-   private String email;
+    @NotNull
+    @Size(min = 3, message = "Username must contain at least 3 characters")
+    private String username;
+    @NotNull
+    @Size(min = 5, message = "Password must contain at least 5 characters")
+    private String password;
+    @NotNull
+    @Size(min = 3, message = "firstName must contain at least 3 characters")
+    private String firstName;
+    private String middleName;
+    @NotNull
+    @Size(min = 3, message = "lastName must contain at least 3 characters")
+    private String lastName;
+
+    @Length(min = 10,max = 10, message = "Phone number must contain 10 digits." )
+    @Digits(integer = 10, fraction = 0, message = "Phone number must be digits.")
+    private String phone;
+    @NotBlank
+    @Email(message = "Please enter a valid e-mail address")
+    private String email;
 
    User toUser(PasswordEncoder encoder) {
        User user = new User();
