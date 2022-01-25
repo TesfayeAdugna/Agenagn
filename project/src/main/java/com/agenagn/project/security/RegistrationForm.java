@@ -16,11 +16,11 @@ public class RegistrationForm {
     @Size(min = 5, message = "Password must contain at least 5 characters")
     private String password;
     @NotNull
-    @Size(min = 3, message = "firstName must contain at least 3 characters")
+    @Size(min = 3, message = "First name must contain at least 3 characters")
     private String firstName;
     private String middleName;
     @NotNull
-    @Size(min = 3, message = "lastName must contain at least 3 characters")
+    @Size(min = 3, message = "Last name must contain at least 3 characters")
     private String lastName;
 
     @Length(min = 10,max = 10, message = "Phone number must contain 10 digits." )
