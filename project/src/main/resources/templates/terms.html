@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+ <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms Of Use</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+  <style>
+      .more {
+        display: none;
+      }
+    </style>
+</head>
+<body>
+    <header class="sticky-top bg-dark text-white ">
+        <div class="jumbotron text-center " style="margin-bottom: 0px;" >
+          <a th:href="@{/}" class="text-decoration-none text-light bg-dark"><h1 class="text-warning">AGENAGN</h1></a>
+        <p>A place for trade communication!</p></div> 
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
+            <div class="container-fluid">
+              <a href="#sidebar" class="navbar-brand" data-bs-toggle="offcanvas" role="button" aria-controls="sidebar">
+                Categories
+              </a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/}">Agenagn</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/itemsform}" tabindex="-1">Sell</a>
+                  </li>
+               
+         </ul>
+         <form class="d-flex w-75 " th:action="@{/search}" method="get">
+          <input class="form-control me-2 w-10" type="search" name="keyword" th:value="${keyword}" placeholder="Search" aria-label="Search" />
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="d-flex nav-item">    
+                      <a sec:authorize="! isAuthenticated()" class="nav-link"  th:href="@{/login}">LogIn</a> 
+                      <a sec:authorize="! isAuthenticated()" class="nav-link" href="#">/</a><a sec:authorize="! isAuthenticated()" class="nav-link"  th:href="@{/register}">SignUp</a> </li>
+                      <li>
+                        <button sec:authorize="! isAuthenticated()" type="submit" value="LogOut" class="btn btn-outline-warning me-2" >LogOut</button>
+                         </li>
+                       
+                       <li>
+                        <a sec:authorize=" isAuthenticated()" class="text-decoration-none text-light bg-dark" th:href="@{/profile}"><h5 sec:authorize="isAuthenticated()"  th:text="${currentUser.getUsername()}" >user first name</h5></a>
+                        </li>
+                        <li><a sec:authorize="! isAuthenticated()"  th:href="@{/profile}" class="text-decoration-none text-light bg-dark"><i class="fa fa-user fa-2x"></i></a></li>
+                
+                      </ul>
+                    </div>
+              </div>
+            </div>
+          
+          </nav>
+        
+          </header>
+
+          <div class="container">
+          <h1>Agreement</h1>
+          
+          <p>By using the services of our website you are agreeing to the terms listed below.</p>
+          
+          
+          <h2>Important Notes</h2>
+          <ul>
+              <li>This website is designed to connect buyers and sellers. The administrator of the website has no relation
+                  with the existence, quality, price, brand or any other attributes of the used item posted by users. THEREFORE, ADMINISTRATOR EXPRESSLY DISCLAIMS ANY LIABILITY IN
+                   CONNECTION TO MATERIALS AND INFORMATION POSTED BY USERS ON THE PLATFORM.
+              </li>
+              <li>Users trying to buy goods are highly encouraged to have a good reveiw of the goods posted onthe website.</li>
+              <li> YOU ACKNOWLEDGE THAT YOU ARE SOLELY RESPONSIBLE FOR YOUR SAFETY AND YOU UNDERSTAND 
+                  HAT YOU SHOULD MEET WITH OTHER INDIVIDUALS FOR COMPLETION OF A TRANSACTION ONLY IN 
+                  SAFE PUBLIC PLACES IN DAYLIGHT HOURS. YOU ARE SOLELY RESPONSIBLE FOR CONDUCTING DUE
+                   DILIGENCE OF ANY INDIVIDUAL OR ORGANIZATION REQUESTING A MEETING TO CONDUCT A JOB 
+                   INTERVIEW OR TO COMPLETE A TRANSACTION. ADMINISTRATOR DISCLAIMS ANY RESPONSIBILITY 
+                   FOR USER'S INTERACTION WITH ANY INDIVIDUAL OR ORGANIZATION.
+            </li>
+            <li>In order to use certain services on our website you may be required to signup and signin to the website
+                and provide some informations about yourself.
+            </li>
+            <li><li> We reserve the right to suspend or terminate your Account, or your access to the Service, 
+                with or without notice to you, in the event that you breach these Terms.</li>
+           </li>
+             <li>You agree to immediately notify us of any unauthorized use, or suspected unauthorized use of your 
+                Account or any other breach of security. We cannot and will not be liable for any loss 
+                 damage arising from your failure to comply with the above requirements.
+            </li>
+            <li>You as a user should and must warrant us that:
+                <ol>
+                    <li>You agree to all our terms.</li>
+                    <li>You are above age 18.</li>
+                    <li>You promise that you provide true, accurate and real information on your profile.</li>
+                    <li>You avoid providing misleading information about your contact informations.</li>
+                    <li>You avoid posting items that are prohibited such as Weapons and stolen items.
+                    </li>
+                    <li>You will not try to collect the contact information of other people without their consent 
+                        or use it for other purposes. </li>
+                        <li>If you are posting an item you are fully responsible for the any conflicts arsising due to 
+                            the attributes of the item you have published.
+                        </li>
+                        <li>If you are on the buyer side, you should be aware that the administrator of this website has no CONNECTION
+                            to the attributes of the item.
+                        </li>
+                </ol>
+            </li>
+            <li>If by any means you violate the terms specified above:
+                <ul>You will be denied a right to use the website with or without notification of your
+                    suspension.
+                </li></ul>
+            </li>
+          </ul>
+          </div>
+          <footer class="bg-dark text-white pt-5 pb-4">
+            <div class="container text-center text-md-left">
+              <div class="row text-center text-md-left">
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                  <h4 class="mb-4 font-weight-bold text-warning">About us</h4>
+                  <ul class="nav flex-column">
+                    <li class="nav-item"><a class="nav-link" th:href="@{/about}">About Agenagn</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/terms}">Terms Of Use</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/privacy}">Privacy Policy</a></li>
+                  </ul>
+                </div> 
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                  <h4 class="mb-4 font-weight-bold text-warning">Important Links</h4>
+                  <ul class="nav flex-column">
+                    <li class="nav-item"><a sec:authorize="! isAuthenticated()" class="nav-link" th:href="@{/profile}">Your Account</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/contact}">Contact Us</a></li>
+                  
+                    <!-- for Admin -->
+                    <li class="nav-item"><a class="nav-link" th:href="@{/getmessage}">Admin</a></li>
+                     <!-- for Admin -->
+                  </ul>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                  <h4 class="mb-4 font-weight-bold text-warning">On Social Media</h4>
+                  <ul class="nav flex-column">
+                   <li class="nav-item">
+                     <a class="nav-link" th:href="@{/itemsform}"><i class="fa fa-facebook"></i>   Facebook</a>
+                     <li class="nav-item">
+                      <a class="nav-link" th:href="@{https://t.me/agenagn_web}"><i class="fa fa-telegram"></i>    Telegram </a>
+                      </li>
+                 </li>
+                 <li class="nav-item">
+                   <a class="nav-link"  th:href=@{mailto:/redietasnakech@gmail.com}><i class="fa fa-envelope"></i>    Email</a>
+                 </li>
+                 <li class="nav-item">
+                   <a class="nav-link" th:href=@{tel:/+251939570613}><i class="fa fa-phone"></i>    Phone</a>
+                 </li></ul>
+                </div>
+              </div>
+            </div>
+          </footer> 
+          <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+          <script th:src="@{/js/bootstrap.min.js}"></script>
+          <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js}" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        
+   </body>
+   </html>
