@@ -46,15 +46,18 @@
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="d-flex nav-item">    
                   <a sec:authorize="! isAuthenticated()" class="nav-link"  th:href="@{/login}">LogIn</a> 
-                  <a sec:authorize="! isAuthenticated()" class="nav-link" href="#">/</a><a sec:authorize="! isAuthenticated()" class="nav-link"  th:href="@{/register}">SignUp</a> </li>
+                  <a sec:authorize="! isAuthenticated()" class="nav-link"  th:href="@{/register}">SignUp</a> </li>
                   <li>
-                  <button sec:authorize="! isAuthenticated()" type="submit" value="LogOut" class="btn btn-outline-warning me-2" >LogOut</button>
+                    <form class="d-flex" method="POST" th:action="@{/logout}">
+                      <input sec:authorize="isAuthenticated()" type="submit" value="Logout"/>
+                     </form>
                    </li>
-                   <li>
+                   <li class="col-4">
                     <a sec:authorize=" isAuthenticated()" class="text-decoration-none text-light bg-dark" th:href="@{/profile}"><h5 sec:authorize="isAuthenticated()"  th:text="${currentUser.getUsername()}" >user first name</h5></a>
                     </li>
                     <li><a sec:authorize="! isAuthenticated()"  th:href="@{/profile}" class="text-decoration-none text-light bg-dark"><i class="fa fa-user fa-2x"></i></a></li>
-            
+                    <li class="col-3" sec:authorize="isAuthenticated()"><a th:if="${!currentUser.hasPhoto()}"  th:href="@{/profile}" class="text-decoration-none text-light bg-dark"><i class="fa fa-user fa-2x"></i></a></li>
+                    <li class="col-3" sec:authorize="isAuthenticated()"><a th:if="${currentUser.hasPhoto()}"  th:href="@{/profile}" class="text-decoration-none text-light bg-dark"><img th:src="@{${currentUser.getPhotosImagePath()}}" class="rounded-circle w-100" alt="profile image"/></a></li>
                   </ul>
                 </div>
           </div>
@@ -97,12 +100,12 @@
   </div>
   <div class="offcanvas-body">
     <ul>
-      <li><a class="dropdown-item" href="#">Accessories</a></li>
-      <li><a class="dropdown-item" href="#">Electronics</a></li>
-      <li><a class="dropdown-item" href="#">Furniture</a></li>
-      <li><a class="dropdown-item" href="#">Phone & Tablets</a></li>
-      <li><a class="dropdown-item" href="#">Property(House, Land & Appartment)</a></li>
-      <li><a class="dropdown-item" href="#">VehicleS</a></li>
+      <li><a class="dropdown-item" href="/accessories">Accessories</a></li>
+      <li><a class="dropdown-item" href="/electronics">Electronics</a></li>
+      <li><a class="dropdown-item" href="/furniture">Furniture</a></li>
+      <li><a class="dropdown-item" href="/phone">Phone & Tablets</a></li>
+      <li><a class="dropdown-item" href="/property">Property(House, Land & Appartment)</a></li>
+      <li><a class="dropdown-item" href="/vehicle">Vehicle</a></li>
     </ul>
   </div>
 </div>
@@ -147,7 +150,7 @@ if (dots.style.display === "none") {
             <li class="nav-item"><a class="nav-link" th:href="@{/contact}">Contact Us</a></li>
           
             <!-- for Admin -->
-            <li class="nav-item"><a class="nav-link" th:href="@{/getmessage}">Admin</a></li>
+            <li sec:authorize="hasRole('ADMIN')" class="nav-item"><a class="nav-link" th:href="@{/getmessage}">Admin</a></li>
              <!-- for Admin -->
           </ul>
         </div>

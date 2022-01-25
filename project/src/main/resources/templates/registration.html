@@ -142,6 +142,10 @@
                   th:if="${#fields.hasErrors('email')}"
                   th:errors="*{email}">
           </div><br>
+          <div class="mb-3">
+            <label for="formFile" class="form-label">Upload photo</label>
+            <input class="form-control" type="file" name="image" accept="image/png, image/jpeg" id="formFile">
+          </div>
         <input class="btn btn-primary my-2" type="submit" value="Register" />
       </form>
        <!-- offcanvas -->
@@ -152,12 +156,12 @@
   </div>
   <div class="offcanvas-body">
     <ul>
-      <li><a class="dropdown-item" href="#">Accessories</a></li>
-      <li><a class="dropdown-item" href="#">Electronics</a></li>
-      <li><a class="dropdown-item" href="#">Furniture</a></li>
-      <li><a class="dropdown-item" href="#">Phone & Tablets</a></li>
-      <li><a class="dropdown-item" href="#">Property(House, Land & Appartment)</a></li>
-      <li><a class="dropdown-item" href="#">VehicleS</a></li>
+      <li><a class="dropdown-item" href="/accessories">Accessories</a></li>
+      <li><a class="dropdown-item" href="/electronics">Electronics</a></li>
+      <li><a class="dropdown-item" href="/furniture">Furniture</a></li>
+      <li><a class="dropdown-item" href="/phone">Phone & Tablets</a></li>
+      <li><a class="dropdown-item" href="/property">Property(House, Land & Appartment)</a></li>
+      <li><a class="dropdown-item" href="/vehicle">Vehicle</a></li>
     </ul>
   </div>
 </div>

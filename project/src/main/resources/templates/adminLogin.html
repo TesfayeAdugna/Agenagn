@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+ <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home page</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+  <style>
+      .more {
+        display: none;
+      }
+    </style>
+</head>
+<body>
+  <header class="sticky-top bg-dark text-white">
+    <div class="jumbotron text-center" style="margin-bottom: 0px;" >
+      <a th:href="@{/}" class="text-decoration-none text-light bg-dark"><h1 class="text-warning">AGENAGN</h1></a>
+    <p>A place for trade communication!</p></div> 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
+        <div class="container-fluid">
+          <a href="#sidebar" class="navbar-brand" data-bs-toggle="offcanvas" role="button" aria-controls="sidebar">
+            Categories
+          </a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" th:href="@{/}">Agenagn</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/itemsform}" tabindex="-1">Sell</a>
+              </li>
+              
+           
+     </ul>
+     <form class="d-flex w-75 " th:action="@{/search}" method="get">
+      <input class="form-control me-2 w-10" type="search" name="keyword" th:value="${keyword}" placeholder="Search" aria-label="Search" />
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="d-flex nav-item">    
+                  <a sec:authorize="! isAuthenticated()" class="nav-link"  th:href="@{/login}">LogIn</a> 
+                  <a sec:authorize="! isAuthenticated()" class="nav-link"  th:href="@{/register}">SignUp</a> </li>
+                  <li>
+                  <button sec:authorize="isAuthenticated()" type="submit" value="LogOut" class="btn btn-outline-warning me-2" >LogOut</button>
+                   </li>
+                   <li>
+                    <a sec:authorize=" isAuthenticated()" class="text-decoration-none text-light bg-dark" th:href="@{/profile}"><h5 sec:authorize="isAuthenticated()"  th:text="${currentUser.getUsername()}" >user first name</h5></a>
+                    </li>
+                    <li><a sec:authorize="! isAuthenticated()"  th:href="@{/profile}" class="text-decoration-none text-light bg-dark"><i class="fa fa-user fa-2x"></i></a></li>
+            
+                  </ul>
+                </div>
+          </div>
+        </div>
+      </nav>
+ 
+      </header>
+   
+          
+    <main class="form-signin mx-auto w-50" style="margin-top: 5em;">
+      <h1>Login</h1>
+
+      <div th:if="${error}">
+        Unable to login. Check your username and password.
+      </div>
+      <form method="POST" th:action="@{/login}">
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+        <label class="form-label" for="username">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          name="username"
+          placeholder="Username"
+        />
+        <label class="form-label" for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          placeholder="Password"
+        />
+        <button class="w-100 btn btn-lg btn-primary my-2" type="submit">
+          Sign in
+        </button>
+      </form>
+      <!-- offcanvas -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id = "sidebar" aria-labelledby="sidebar-label">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="sidebar-label">Categories</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" arial-label="close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul>
+      <li><a class="dropdown-item" href="#">Accessories</a></li>
+      <li><a class="dropdown-item" href="#">Electronics</a></li>
+      <li><a class="dropdown-item" href="#">Furniture</a></li>
+      <li><a class="dropdown-item" href="#">Phone & Tablets</a></li>
+      <li><a class="dropdown-item" href="#">Property(House, Land & Appartment)</a></li>
+      <li><a class="dropdown-item" href="#">VehicleS</a></li>
+    </ul>
+  </div>
+</div>
+<!-- offcanvas -->
+    </main>
+
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <footer class="bg-dark text-white pt-5 pb-4">
+      <div class="container text-center text-md-left">
+        <div class="row text-center text-md-left">
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h4 class="mb-4 font-weight-bold text-warning">About us</h4>
+            <ul class="nav flex-column">
+              <li class="nav-item"><a class="nav-link" href="#">About Agenagn</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Our Goals</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Privacy Policy</a></li>
+            </ul>
+          </div> 
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h4 class="mb-4 font-weight-bold text-warning">Important Links</h4>
+            <ul class="nav flex-column">
+              <li class="nav-item"><a class="nav-link" href="#">Our Items</a></li>
+              <li class="nav-item"><a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/profile}">Your Account</a></li>
+              <li class="nav-item"><a class="nav-link" th:href="@{/contact}">Contact Us</a></li>
+              <!-- for Admin -->
+              <li class="nav-item"><a class="nav-link" th:href="@{/getmessage}">Admin</a></li>
+              <!-- for Admin -->
+            </ul>
+          </div>
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h4 class="mb-4 font-weight-bold text-warning">Contact Us</h4>
+            <ul class="nav flex-column">
+              <li class="nav-item"><a class="nav-link" th:href="@{/itemsform}">Facebook</a></li>
+              <li class="nav-item"><a class="nav-link" th:href=@{/itemsform}>Telegram</a></li>
+              <li class="nav-item"><a class="nav-link"  th:href=@{/itemsform}>Email</a></li>
+              <li class="nav-item"><a class="nav-link" th:href=@{/itemsform}>Phone</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer> 
+  </body>
+</html>

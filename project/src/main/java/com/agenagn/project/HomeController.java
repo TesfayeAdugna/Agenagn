@@ -36,7 +36,6 @@ public class HomeController {
         if(!(user == null)){
             model.addAttribute("currentUser", user);
         }
-        System.out.print("Get /");
         return "home";
     }
     // for search
@@ -53,7 +52,7 @@ public class HomeController {
      model.addAttribute("listitem", listitem);}
      return "home";
     }
-    // for search
+   
     @GetMapping("/itemsform")
     public String sell(Model model ,@AuthenticationPrincipal User user){
         model.addAttribute("item", new Items());
@@ -105,7 +104,71 @@ public class HomeController {
     }
     @RequestMapping("/delete/{id}")
     public String deleteitem(@PathVariable(name = "id") int id) {
+        String filepath= service.get(id).getPhotosImagePath();
         service.delete(id);
+        FileUploadUtil.deleteFile(filepath);
         return "redirect:/";
+    }
+
+    //for catagory serch
+    @RequestMapping("/accessories")
+    public String accessories(Items items, Model model, @AuthenticationPrincipal User user) {
+        List<Items> listitem = repo.findByType("Accessories");
+        model.addAttribute("listitem", listitem);
+        
+        if(!(user == null)){
+            model.addAttribute("currentUser", user);
+        }
+        return "home";
+    }
+    @RequestMapping("/electronics")
+    public String electronics(Items items, Model model, @AuthenticationPrincipal User user) {
+        List<Items> listitem = repo.findByType("Electronics");
+        model.addAttribute("listitem", listitem);
+        
+        if(!(user == null)){
+            model.addAttribute("currentUser", user);
+        }
+        return "home";
+    }
+    @RequestMapping("/furniture")
+    public String furniture(Items items, Model model, @AuthenticationPrincipal User user) {
+        List<Items> listitem = repo.findByType("Furniture");
+        model.addAttribute("listitem", listitem);
+        
+        if(!(user == null)){
+            model.addAttribute("currentUser", user);
+        }
+        return "home";
+    }
+    @RequestMapping("/phone")
+    public String phone(Items items, Model model, @AuthenticationPrincipal User user) {
+        List<Items> listitem = repo.findByType("Phone and Tablets");
+        model.addAttribute("listitem", listitem);
+        
+        if(!(user == null)){
+            model.addAttribute("currentUser", user);
+        }
+        return "home";
+    }
+    @RequestMapping("/property")
+    public String property(Items items, Model model, @AuthenticationPrincipal User user) {
+        List<Items> listitem = repo.findByType("Property");
+        model.addAttribute("listitem", listitem);
+        
+        if(!(user == null)){
+            model.addAttribute("currentUser", user);
+        }
+        return "home";
+    }
+    @RequestMapping("/vehicle")
+    public String vehicle(Items items, Model model, @AuthenticationPrincipal User user) {
+        List<Items> listitem = repo.findByType("VehicleS");
+        model.addAttribute("listitem", listitem);
+        
+        if(!(user == null)){
+            model.addAttribute("currentUser", user);
+        }
+        return "home";
     }
 }

@@ -17,13 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ContactController {
     @Autowired
     private ContactService service;
-    @GetMapping("/getmessage")
-    public String message(Model model) {
-        List<Contact> listcontact = service.listAll();
-        model.addAttribute("listcontact", listcontact);
-        System.out.print("Get /");
-        return "getmessage";
-    }
     @GetMapping("/contact")
     public String contact(Model model, @AuthenticationPrincipal User user){
         if(!(user == null)){
@@ -34,7 +27,9 @@ public class ContactController {
     }
     @RequestMapping(value = "/send", method = RequestMethod.POST)
     public String sendContact(@ModelAttribute("contact") Contact contact, @AuthenticationPrincipal User user){
-        contact.setUser(user);
+        if(!(user == null)){
+            contact.setUser(user);
+        }
         service.save(contact);
         return "redirect:/";
     }

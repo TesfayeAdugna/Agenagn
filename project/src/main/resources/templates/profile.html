@@ -70,9 +70,11 @@
       </header>
     <main class="mx-auto w-50" style="margin-top: 5em;">
       <div sec:authorize="isAuthenticated()" class="row mx-auto">
-        <div class="mx-auto" style="width: 50%;"><img th:src="@{/images/guest-user.jpg}" class="rounded-circle w-100" alt="profile image"/></div>
+        <div th:if="${!currentUser.hasPhoto()}" class="mx-auto" style="width: 50%;"><img th:src="@{/images/guest-user.jpg}" class="rounded-circle w-100" alt="profile image"/></div>
+        <div th:if="${currentUser.hasPhoto()}" class="mx-auto" style="width: 50%;"><img th:src="@{${currentUser.getPhotosImagePath()}}" class="rounded-circle w-100" alt="profile image"/></div>
         <div style="text-align: center;">
           <span th:text="${currentUser.getFirstName()}"></span> <span th:text="${currentUser.getLastName()}"></span>
+        </div>
         </div>
     </main>
   <script th:src="@{/js/bootstrap.bundle.min.js}"></script>

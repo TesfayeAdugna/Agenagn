@@ -30,16 +30,20 @@ public class RegistrationForm {
     @Email(message = "Please enter a valid e-mail address")
     private String email;
 
-   User toUser(PasswordEncoder encoder) {
-       User user = new User();
-       user.setUsername(this.username);
-       user.setPassword(encoder.encode(this.password));
-       user.setFirstName(this.firstName);
-       user.setMiddleName(this.middleName);
-       user.setLastName(this.lastName);
-       user.setPhone(this.phone);
-       user.setEmail(this.email);
-       return user;
-   }
+    private String photo;
+
+    User toUser(PasswordEncoder encoder) {
+        User user = new User();
+        user.setUsername(this.username);
+        user.setPassword(encoder.encode(this.password));
+        user.setFirstName(this.firstName);
+        user.setMiddleName(this.middleName);
+        user.setLastName(this.lastName);
+        user.setPhone(this.phone);
+        user.setEmail(this.email);
+        user.setPhoto(this.photo);
+        user.setRole("ROLE_USER");
+        return user;
+    }
 }
 

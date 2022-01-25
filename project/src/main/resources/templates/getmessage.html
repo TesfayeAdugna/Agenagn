@@ -77,20 +77,21 @@
         <tr>
             <th scope="col">Username</th>
             <th scope="col">First Name</th>
-            <th scope="col">Middle Name</th>
             <th scope="col">Last Name</th>
             <th scope="col">Phone</th>
             <th scope="col">email</th>
+            <th scope="col">Delete</th>
         </tr>
         </thead>
         <tbody>
-        <tr  th:each="contact : ${listcontact}">
-            <td scope="row" th:text="${contact.id}"></td>
-            <td th:text="${contact.name}">name</td>
-            <td th:text="${contact.email}">email</td>
-            <td th:text="${contact.subject}">subject</td>
-            <td th:text="${contact.message}">message</td>
-            <td>youremail@gmail.com</td>
+        <tr  th:each="user : ${listuser}">
+            <td scope="row" th:text="${user.id}"></td>
+            <td th:text="${user.getUsername}">Username</td>
+            <td th:text="${user.getFirstName}">First Name</td>
+            <td th:text="${user.getPhone}">Phone</td>
+            <td th:text="${user.getEmail}">email</td>
+            <td><a class="btn btn-outline-danger" th:href="@{'/delete/'+ ${user.id}}" role="button">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -114,10 +115,10 @@
         <tbody>
         <tr  th:each="contact : ${listcontact}">
             <td scope="row" th:text="${contact.id}"></td>
-            <td th:text="${contact.name}">name</td>
-            <td th:text="${contact.email}">email</td>
-            <td th:text="${contact.subject}">subject</td>
-            <td th:text="${contact.message}">message</td>
+            <td th:text="${contact.getName}">name</td>
+            <td th:text="${contact.getEmail}">email</td>
+            <td th:text="${contact.getSubject}">subject</td>
+            <td th:text="${contact.getMessage}">message</td>
         </tr>
         </tbody>
     </table>
@@ -133,12 +134,12 @@
   </div>
   <div class="offcanvas-body">
     <ul>
-      <li><a class="dropdown-item" href="#">Accessories</a></li>
-      <li><a class="dropdown-item" href="#">Electronics</a></li>
-      <li><a class="dropdown-item" href="#">Furniture</a></li>
-      <li><a class="dropdown-item" href="#">Phone & Tablets</a></li>
-      <li><a class="dropdown-item" href="#">Property(House, Land & Appartment)</a></li>
-      <li><a class="dropdown-item" href="#">VehicleS</a></li>
+      <li><a class="dropdown-item" href="/accessories">Accessories</a></li>
+      <li><a class="dropdown-item" href="/electronics">Electronics</a></li>
+      <li><a class="dropdown-item" href="/furniture">Furniture</a></li>
+      <li><a class="dropdown-item" href="/phone">Phone & Tablets</a></li>
+      <li><a class="dropdown-item" href="/property">Property(House, Land & Appartment)</a></li>
+      <li><a class="dropdown-item" href="/vehicle">Vehicle</a></li>
     </ul>
   </div>
 </div>

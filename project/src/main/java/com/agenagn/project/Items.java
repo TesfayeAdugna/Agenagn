@@ -42,7 +42,8 @@ public class Items {
     @Temporal(TemporalType.DATE)
     private Date created_Date = new Date(System.currentTimeMillis());
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @Transient
