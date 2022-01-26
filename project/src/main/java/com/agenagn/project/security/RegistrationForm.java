@@ -18,7 +18,6 @@ public class RegistrationForm {
     @NotNull
     @Size(min = 3, message = "First name must contain at least 3 characters")
     private String firstName;
-    private String middleName;
     @NotNull
     @Size(min = 3, message = "Last name must contain at least 3 characters")
     private String lastName;
@@ -37,7 +36,6 @@ public class RegistrationForm {
         user.setUsername(this.username);
         user.setPassword(encoder.encode(this.password));
         user.setFirstName(this.firstName);
-        user.setMiddleName(this.middleName);
         user.setLastName(this.lastName);
         user.setPhone(this.phone);
         user.setEmail(this.email);

@@ -13,6 +13,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 public class TermsController {
     @GetMapping("/terms")
     public String about(Model model ,@AuthenticationPrincipal User user){
+        if(!(user == null)){
+            model.addAttribute("currentUser", user);
+        }
         return "terms";
     }
     

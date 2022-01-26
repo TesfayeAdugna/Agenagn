@@ -36,7 +36,6 @@ public class User implements UserDetails {
     private String username;
     private String password;
     private String firstName;
-    private String middleName;
     private String lastName;
     private String phone;
     private String email;
@@ -52,6 +51,10 @@ public class User implements UserDetails {
     public boolean hasPhoto(){
         if (this.photo == null) return false;
         return true;
+    }
+    public boolean isAdmin(){
+        if (this.role == "ROLE_ADMIN") return true;
+        return false;
     }
 
 

@@ -53,9 +53,7 @@
     <main class="form-signin mx-auto w-50" style="margin-top: 5em;">
       <h1>Login</h1>
 
-      <div th:if="${error}">
-        Unable to login. Check your username and password.
-      </div>
+      <div class="" th:if="${errorMessage}" th:text="${errorMessage}">errorMessage</div>
 
       <p>New here? Click <a th:href="@{/register}">here</a> to register.</p>
       <form method="POST" th:action="@{/login}">

@@ -62,7 +62,7 @@ public class RegistrationController {
     try {
     FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
     } catch (IOException e) {
-    System.out.print("teshome it looks like you have an error");
+    System.out.print("unable to save file");
     }
 
     return "redirect:/login";

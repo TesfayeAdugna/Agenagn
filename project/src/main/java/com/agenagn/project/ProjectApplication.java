@@ -29,7 +29,6 @@ public class ProjectApplication {
 				user.setUsername("teshome");
 				user.setPassword(passwordEncoder.encode("UGR/3281/12"));
 				user.setFirstName("Teshome");
-				user.setMiddleName("Y.");
 				user.setLastName("Nbret");
 				user.setPhone("0932255228");
 				user.setEmail("teshomenbret4@gmail.com");
@@ -38,12 +37,11 @@ public class ProjectApplication {
 
 				User user1 = new User();
 				user1.setUsername("kenna");
-				user1.setPassword(passwordEncoder.encode(" UGR/0317/12"));
+				user1.setPassword(passwordEncoder.encode("UGR/0317/12"));
 				user1.setFirstName("Kenna");
-				user1.setMiddleName("T.");
 				user1.setLastName("Tefera");
-				user1.setPhone("0932255228");
-				user1.setEmail("teshomenbret@gmail.com");
+				user1.setPhone("0930255228");
+				user1.setEmail("kenna@gmail.com");
 				user1.setRole("ROLE_ADMIN");
 				userRepository.save(user1);
 
@@ -51,10 +49,9 @@ public class ProjectApplication {
 				user2.setUsername("endale");
 				user2.setPassword(passwordEncoder.encode("UGR/7379/12"));
 				user2.setFirstName("Endale");
-				user2.setMiddleName("Y.");
 				user2.setLastName("Yohannes");
-				user2.setPhone("0932255228");
-				user2.setEmail("teshomenbret@gmail.com");
+				user2.setPhone("0922255228");
+				user2.setEmail("endaleyohannes8@gmail.com");
 				user2.setRole("ROLE_ADMIN");
 				userRepository.save(user2);
 
@@ -62,10 +59,9 @@ public class ProjectApplication {
 				user3.setUsername("tesfaye");
 				user3.setPassword(passwordEncoder.encode("UGR/4709/12"));
 				user3.setFirstName("Tesfaye");
-				user3.setMiddleName("A.");
 				user3.setLastName("Adugna");
-				user3.setPhone("0932255228");
-				user3.setEmail("teshomenbret@gmail.com");
+				user3.setPhone("0912255228");
+				user3.setEmail("adugatesfaye888@gmail.com");
 				user3.setRole("ROLE_ADMIN");
 				userRepository.save(user3);
 
@@ -73,10 +69,9 @@ public class ProjectApplication {
 				user4.setUsername("rediet");
 				user4.setPassword(passwordEncoder.encode("UGR/1415/12"));
 				user4.setFirstName("Rediet");
-				user4.setMiddleName("F.");
 				user4.setLastName("Ferew");
-				user4.setPhone("0932255228");
-				user4.setEmail("teshomenbret@gmail.com");
+				user4.setPhone("0912455228");
+				user4.setEmail("rediet@gmail.com");
 				user4.setRole("ROLE_ADMIN");
 				userRepository.save(user4);
 		   }

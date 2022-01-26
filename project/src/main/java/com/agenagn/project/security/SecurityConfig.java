@@ -33,15 +33,16 @@ public class SecurityConfig {
        return http
                .authorizeRequests()
                .antMatchers("/itemsform","/profile").hasRole("USER")
-               .antMatchers("/user","/getmessage","/delete/{id}").hasRole("ADMIN")
-               .antMatchers("/", "/**").permitAll()
+               .antMatchers("/getmessage","/deleteUser/{id}","/profile").hasRole("ADMIN")
+               .antMatchers("/admin", "/login-error","/register","/login","/about","/contact","/search","/accessories","/electronics","/furniture","/phone","/property","/vehicle","/privacy","/terms","/").permitAll()
                .and()
                .formLogin()
-               .loginPage("/login")
+               .loginPage("/login").failureUrl("/login-error")
                .defaultSuccessUrl("/")
                .and()
                .logout()
                .logoutSuccessUrl("/")
+               .and().exceptionHandling().accessDeniedPage("/accessdenied")
                .and()
                .build();
    }
