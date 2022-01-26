@@ -74,8 +74,7 @@ public class ProjectApplication {
 				user4.setEmail("rediet@gmail.com");
 				user4.setRole("ROLE_ADMIN");
 				userRepository.save(user4);
-		   }
-		
+			}
 		};
 	}
 
