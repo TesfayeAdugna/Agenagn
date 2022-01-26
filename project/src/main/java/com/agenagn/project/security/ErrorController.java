@@ -1,12 +1,6 @@
 package com.agenagn.project.security;
 
-import javax.naming.AuthenticationException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.aspectj.weaver.patterns.PointcutEvaluationExpenseComparator;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

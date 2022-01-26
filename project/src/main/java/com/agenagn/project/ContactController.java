@@ -1,7 +1,5 @@
 package com.agenagn.project;
 
-import java.util.List;
-
 import com.agenagn.project.security.User;
 
 import org.springframework.beans.factory.annotation.Autowired;

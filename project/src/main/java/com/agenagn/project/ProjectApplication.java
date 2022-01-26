@@ -1,7 +1,5 @@
 package com.agenagn.project;
 
-import java.util.List;
-
 import com.agenagn.project.security.User;
 import com.agenagn.project.security.UserRepository;
 
@@ -10,8 +8,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-
 
 @SpringBootApplication
 public class ProjectApplication {
