@@ -16,53 +16,47 @@
     </style>
 </head>
 <body>
-    <header class="sticky-top bg-dark text-white ">
-        <div class="jumbotron text-center " style="margin-bottom: 0px;" >
-          <a th:href="@{/}" class="text-decoration-none text-light bg-dark"><h1 class="text-warning">AGENAGN</h1></a>
-        <p>A place for trade communication!</p></div> 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
-            <div class="container-fluid">
-              <a href="#sidebar" class="navbar-brand" data-bs-toggle="offcanvas" role="button" aria-controls="sidebar">
-                Categories
-              </a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/}">Agenagn</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" th:href="@{/itemsform}" tabindex="-1">Sell</a>
-                  </li>
-               
-         </ul>
-         <form class="d-flex w-75 " th:action="@{/search}" method="get">
-          <input class="form-control me-2 w-10" type="search" name="keyword" th:value="${keyword}" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="d-flex nav-item">    
-                      <a sec:authorize="! isAuthenticated()" class="nav-link"  th:href="@{/login}">LogIn</a> 
-                      <a sec:authorize="! isAuthenticated()" class="nav-link" href="#">/</a><a sec:authorize="! isAuthenticated()" class="nav-link"  th:href="@{/register}">SignUp</a> </li>
-                      <li>
-                        <button sec:authorize="! isAuthenticated()" type="submit" value="LogOut" class="btn btn-outline-warning me-2" >LogOut</button>
-                         </li>
-                       
-                       <li>
-                        <a sec:authorize=" isAuthenticated()" class="text-decoration-none text-light bg-dark" th:href="@{/profile}"><h5 sec:authorize="isAuthenticated()"  th:text="${currentUser.getUsername()}" >user first name</h5></a>
-                        </li>
-                        <li><a sec:authorize="! isAuthenticated()"  th:href="@{/profile}" class="text-decoration-none text-light bg-dark"><i class="fa fa-user fa-2x"></i></a></li>
-                
-                      </ul>
-                    </div>
-              </div>
-            </div>
-          
-          </nav>
-        
-          </header>
+  <header class="bg-dark text-white">
+    <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-dark"> 
+      <div class="container-fluid" style="margin-left: 5em;">
+        <a href="#sidebar" class="navbar-brand" data-bs-toggle="offcanvas" role="button" aria-controls="sidebar">Categories</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+            <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{/}">Agenagn</a></li>
+            <li class="nav-item"><a class="nav-link bg-dark text-white" th:href="@{/itemsform}" tabindex="-1">Sell</a></li>     
+          </ul>
+          <form class="d-flex w-50 " th:action="@{/search}" method="get">
+            <input class="form-control me-2 w-10" type="search" name="keyword" th:value="${keyword}" placeholder="Search" aria-label="Search" />
+            <button class="btn btn-outline-success text-light" type="submit">Search</button>
+          </form>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="d-flex nav-item">    
+                <a sec:authorize="! isAuthenticated()" class="nav-link"  th:href="@{/login}">LogIn</a> 
+                <a sec:authorize="! isAuthenticated()" class="nav-link"  th:href="@{/register}">SignUp</a> 
+              </li>
+              <li class="col-8"><a sec:authorize=" isAuthenticated()" class="text-decoration-none text-light bg-dark" th:href="@{/profile}"><h5 class="float-end" sec:authorize="isAuthenticated()"  th:text="${currentUser.getUsername()}" >user first name</h5></a></li>
+              <li><a sec:authorize="! isAuthenticated()"  th:href="@{/profile}" class="text-decoration-none text-light bg-dark"><i class="fa fa-user fa-2x"></i></a></li>
+              <li class="col-4" sec:authorize="isAuthenticated()"><a th:if="${!currentUser.hasPhoto()}"  th:href="@{/profile}" class="text-decoration-none text-light bg-dark"><i class="fa fa-user fa-2x"></i></a></li>
+              <li class="col-4" sec:authorize="isAuthenticated()" style="width: 3em; margin-right: 3em; margin-left: -3em;" ><a th:if="${currentUser.hasPhoto()}"  th:href="@{/profile}" class="text-decoration-none text-light bg-dark"><img th:src="@{${currentUser.getPhotosImagePath()}}" class="rounded-circle w-100" alt="profile image"/></a></li>
+              <li>
+                <form class="d-flex" method="POST" th:action="@{/logout}">
+                  <input class="btn btn-outline-warning" sec:authorize="isAuthenticated()" type="submit" value="Logout"/>
+                </form>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="jumbotron text-center" style="margin-top: 3.2em; padding-top: 2em;" >
+      <p>A place for trade communication!</p>
+      <h1 class="text-warning">AGENAGN</h1>
+    </div>
+</header>
 
           <div class="container">
           <h1>Agreement</h1>
