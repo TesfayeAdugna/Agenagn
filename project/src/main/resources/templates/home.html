@@ -35,8 +35,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="d-flex nav-item">    
-                  <a sec:authorize="! isAuthenticated()" class="nav-link"  th:href="@{/login}">LogIn</a> 
-                  <a sec:authorize="! isAuthenticated()" class="nav-link"  th:href="@{/register}">SignUp</a> 
+                  <a sec:authorize="! isAuthenticated()" class="nav-link text-light"  th:href="@{/login}">LogIn</a> 
+                  <a sec:authorize="! isAuthenticated()" class="nav-link text-light"  th:href="@{/register}">SignUp</a> 
                 </li>
                 <li class="col-8"><a sec:authorize=" isAuthenticated()" class="text-decoration-none text-light bg-dark" th:href="@{/profile}"><h5 class="float-end" sec:authorize="isAuthenticated()"  th:text="${currentUser.getUsername()}" >user first name</h5></a></li>
                 <li><a sec:authorize="! isAuthenticated()"  th:href="@{/profile}" class="text-decoration-none text-light bg-dark"><i class="fa fa-user fa-2x"></i></a></li>
