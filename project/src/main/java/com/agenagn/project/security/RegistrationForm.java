@@ -10,6 +10,7 @@ import javax.validation.constraints.*;
 @Data
 public class RegistrationForm {
     @NotNull
+    @Size(max = 12, message = "Username must contain at most 12 characters")
     @Size(min = 3, message = "Username must contain at least 3 characters")
     private String username;
     @NotNull

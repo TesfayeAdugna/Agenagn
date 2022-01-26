@@ -63,7 +63,7 @@
   <div class="row">
     <div class="row row-cols-3">
       <div class="col" th:each="item : ${listitem}">
-        <div class="card mb-3">
+        <div class="card mb-3 pb-4">
           <p class="text-info bg-dark" th:text="${item.created_Date}">jul,2021</p>
           <img th:src="@{${item.photosImagePath}}"  th:alt="${item.shortDescription}"/>
           <div class="card-body">
@@ -75,8 +75,8 @@
             <button onclick="myFunction()" class="myBtn">Read more</button>
             <span sec:authorize="isAuthenticated()">
               <a th:if="${currentUser.username} == ${item.User.username}" class="btn btn-primary" th:href="@{'/edit/'+ ${item.id}}" role="button">Edit</a>
-              <a th:if="${currentUser.username} == ${item.User.username}" class="btn btn-outline-danger" th:href="@{'/delete/'+ ${item.id}}" role="button">Delete</a>
-              <a sec:authorize="hasRole('ADMIN')" class="btn btn-outline-danger" th:href="@{'/delete/'+ ${item.id}}" role="button">Delete</a>
+              <a th:if="${currentUser.username} == ${item.User.username}" class="btn btn-outline-danger" th:href="@{'/deleteitem/'+ ${item.id}}" role="button">Delete</a>
+              <a sec:authorize="hasRole('ADMIN')" class="btn btn-outline-danger" th:href="@{'/deleteitem/'+ ${item.id}}" role="button">Delete</a>
             </span>
           </div>
         </div>

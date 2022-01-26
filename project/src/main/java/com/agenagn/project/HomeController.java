@@ -102,11 +102,9 @@ public class HomeController {
         return mav;
         
     }
-    @RequestMapping("/delete/{id}")
+    @RequestMapping("/deleteitem/{id}")
     public String deleteitem(@PathVariable(name = "id") int id) {
-        String filepath= service.get(id).getPhotosImagePath();
         service.delete(id);
-        FileUploadUtil.deleteFile(filepath);
         return "redirect:/";
     }
 

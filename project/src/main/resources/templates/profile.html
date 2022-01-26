@@ -69,6 +69,7 @@
             <li class="list-group-item"><span>Phone: </span><span th:text="${currentUser.getPhone()}"></span></li>
           </ul>
         </div>
+       <div sec:authorize="hasRole('USER')"><a class="mb-4 btn btn-outline-info" th:href="@{/your}" >see your item</a></div>
         </div>
         <div class="offcanvas offcanvas-start" tabindex="-1" id = "sidebar" aria-labelledby="sidebar-label">
           <div class="offcanvas-header">

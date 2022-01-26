@@ -33,28 +33,16 @@ public class AdminController {
       return "adminLogin";
     } 
 
-
-    @GetMapping("/user")
-    public String showUser() {
-        List<User>users=(List<User>) userRepository.findAll();
-      return "registration";
-    }    
-
     @GetMapping("/delete/{id}")
     @PreAuthorize("hasRole('ADMIN')")
    public String deleteUser(@PathVariable(name = "id") Long id) {
        User user=userRepository.findById(id).get();
 		   List<Items>items = itemRepository.findByUser(user);
 		   for(Items item:items){
-        // String filepath= item.getPhotosImagePath();
 				itemRepository.delete(item);
-        // FileUploadUtil.deleteFile(filepath);
 		   }
-      //  if(user.hasPhoto()){
-      //   FileUploadUtil.deleteFile(filepath);
-      //  }
 		   userRepository.delete(user);
-       return "getmessage"; 
+       return "redirect:/getmessage"; 
    }
    
    @GetMapping("/getmessage")
