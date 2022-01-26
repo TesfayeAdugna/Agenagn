@@ -118,11 +118,11 @@
                   <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                     <h4 class="mb-4 font-weight-bold text-warning">Important Links</h4>
                     <ul class="nav flex-column">
-                      <li class="nav-item"><a sec:authorize="! isAuthenticated()" class="nav-link  bg-dark text-white" th:href="@{/profile}">Your Account</a></li>
+                      <li class="nav-item"><a class="nav-link  bg-dark text-white" th:href="@{/profile}">Your Account</a></li>
                       <li class="nav-item"><a class="nav-link  bg-dark text-white" th:href="@{/contact}">Contact Us</a></li>
                     
                       <!-- for Admin -->
-                      <li sec:authorize="hasRole('ADMIN')" class="nav-item"><a class="nav-link  bg-dark text-white" th:href="@{/getmessage}">Admin</a></li>
+                      <li sec:authorize="hasRole('ADMIN')" class="nav-item"><a class="nav-link  bg-dark text-white" th:href="@{/getmessage}">Dashboard</a></li>
                        <!-- for Admin -->
                     </ul>
                   </div>
